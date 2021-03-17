@@ -1,54 +1,155 @@
-\documentclass{homework}
+\documentclass{report}
 
-\title{Report Outline for \\Creamy and Delicious Chocolate Fudge}
-\author{J. Lefebvre\\\small{jayden.lefebvre@mail.utoronto.ca}\\\small{UTorID: lefebv69}}
+\usepackage{contour}
+\usepackage{ulem}
+
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+\title{\\\large{}}
+\author{}
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+ 
+        \textbf{Report Topic Outline}
+ 
+        \vspace{0.5cm}
+        \textit{Compliant Mechanisms, Load Cells, and 3D Printing - Oh My!}
+             
+        \vspace{1.5cm}
+ 
+        J. Lefebvre\\\small{jayden.lefebvre@mail.utoronto.ca}\\\small{UTorID: lefebv69}
+ 
+        \vfill
+             
+        \vspace{0.8cm}
+             
+        Engineering Science\\
+        Faculty of Applied Science and Engineering\\
+        University of Toronto\\
+        Sunday March 14th, 2021
+             
+    \end{center}
+ \end{titlepage}
 
-\section{Polymer for Latching Compliant Mechanisms}
+% \maketitle
+
+\section{Polymer for Compliant Mechanism Hinges}
 
 \subsection{Introduction}
 
-A "compliant mechanism" is a subset of simple mechanical devices used to transform force and motion via plastic deformation and deflection (thus, complying to the stimuli imparted onto it).
-Compliant mechanisms have become increasingly popular as an alternative to more traditional rigid systems for a variety of reasons, mostly dependent on the use case [1].
-Their potential use cases are immensely broad, ranging from sensitive surgical instrumentation (that must respond and react to subtle muscle movements and deflect so as to not cause tissue damage) and 
+Compliant mechanisms are a category of simple mechanical devices used to transform force and motion via \textbf{elastic deformation and deflection} (thus, "complying" to the stimuli imparted onto it).
+They have become increasingly popular as an alternative to more traditional rigid and jointed systems for a variety of reasons, dependent on the use case [1].
+Their potential use cases are immensely broad, ranging from sensitive surgical instrumentation (that must respond and react to subtle muscle movements and deflect so as to not cause tissue damage) to emergency safety mechanisms designed to prevent the accidental firing of nuclear weapons[2].
+Although typically made from \textbf{plastics} and other polymers, they may also be made from ductile metals (or even paper in the case of "action origami", which I think is pretty cool)[2]. For the purposes of this report, only plastics will be considered.
 
-\subsection{Property Problem, Microstructure Solution}
+FIGURE: Examples of compliant mechanism use cases
 
+\subsection{Hinge Fatigue via Repetitive Stress}
 
+Just as any typical hardware mechanism must be designed to withstand many, \textit{many} uses (often on the order of hundreds of thousands, or more), compliant mechanisms aiming to solve similar problems 
+must be designed to "comply" just as many times. However, where traditional hardware mechanisms experience very gradual (often unnoticeable) surface wear as a result of \textit{sliding friction}, compliant mechanisms experience permanent deformation over time
+as a result of \textbf{repeated \textit{elastic} stress} (further explained below). This difference is best exemplified in "hinge" components (those transferring work rotationally). Where traditional hardware mechanisms have joints (pins fastening two or more bodies about which they rotate), 
+compliant mechanisms \textbf{bend} at specific locations with thinner cross-sectional area (relative to the bending moment)[1]. 
 
-\subsubsection{Critical Use Cases}
+FIGURE: Example of a compliant "hinge"
 
-Nuclear fallback safety systems
+\subsection{Fatigue: Origins, Propagation, and Parameters}
 
-\subsubsection{Consistent Path Tracing}
+Invisible to the naked eye, under repetitive elastic deformation, "faults are introduced at the molecular level ... After many deformations, cracks will begin to appear, followed soon after by a fracture, with no apparent plastic deformation in between"[3].
+The fatigue process begins with dislocation movements, which eventually form \textbf{persistent slip bands} (PSBs) that ultimately become the origin of larger-order failure.
 
+FIGURE: Plastic fatigue at the microstructure
 
-
-\subsubsection{State Latching}
-
-"Latches" are component sub-mechanisms built in to larger compliant mechanisms used to "save" the positional state of the mechanics in the compliant mechanism, in a similar way to how a transistor-based latch saves the binary logic-level state of a digital system.
+Fatigue life (number of cycles before fatigue) is influenced by a variety of factors, including environment (temperature, humidity, etc.), surface finish, metallurgical microstructure, presence of oxidizing or inert chemicals, residual stresses, and (most importantly) the magnitude of the repetitively applied stress (proximity to the plastic region). 
+Unfortunately, the fatigue process is also (to a degree) random, often displaying considerable scatter even in seemingly identical samples in well controlled environments[3].
 
 \subsection{Conclusion}
 
-\section{Alloy for Low-Load, Long-Term Load Cells}
+In order for critical compliant mechanisms to be reliable over long lifetimes, they must be made of materials resilient to high-cycle fatigue. Polymers intended for these applications must be resistent to dislocation movements while maintaining suitable flexibility AND stiffness for the design application (with a specific focus on "hinges").
+
+\section{Metal Alloy for Low-Load, Long-Term Load Cells}
 
 \subsection{Introduction}
-\subsection{Property Problem, Microstructure Solution}
+
+Load cells are sensors that change in resistance directly proportionate to the applied load. Used primarily in scales (and other digital weighing devices), they are often made of metals, due to their high strength (thus, ability to weigh large loads)[4].
+These load cells perform extremely well under short-term loading, in which an object is loaded on the cell and the reading is allowed to "creep" towards the final value as they metal deforms elastically and changes in internal resistance\footnote{The exact mechanism by which this resistance changes is beyond the scope of this report; it is assumed that it is directly proportionate to the deflection of the load cell.}
+However, in very specific and/or novel applications (such as one that I am currently personally working on, a scale system for hydroponically-grown crops that suspends and weighs the plant continuously as it grows from seed to harvest\footnote{https://github.com/UTAgritech/PeaPod}), load cells may be required to perform in low-stress, long-term loading while maintaining high precision.
+
+FIGURE: Example of a load cell and usage
+
+\subsection{Creep (the Material Deformation, not the Radiohead Song)}
+
+Creep is defined as "the tendency of a solid material to move slowly or deform permanently under the influence of persistent mechanical stresses"[5]. 
+It operates on the principle of Hooke's law (similarly to elastic strain) where the final deflection is proportionate to the applied stress.
+It is \myuline{time-dependant}, and is best understood throuhg a graph of creep strain vs. time:
+
+FIGURE: Classical creep strain vs. time
+
+Creep strain over time is divided into three phases[6]:
+\begin{enumerate}
+    \item Primary Creep: starts at a rapid rate and slows with time as the material strengthens with temporary dislocation;
+    \item Secondary Creep: has a relatively uniform rate proportionate to stress;
+    \item Tertiary Creep: accelerating creep rate and terminates when the material ultimately ruptures.
+\end{enumerate}
+
+Creep deformation in metals occurs via a variety of mechanisms[6]:
+\begin{itemize}
+    \item Bulk Diffusion (Nabarro-Herring creep): Creep rate decreases as grain size increases
+    \item Grain Boundary Diffusion (Coble creep): Stronger grain size dependence than Nabarro Herring
+    \item Dislocation creep: Controlled by movement of dislocations, \textbf{strong} dependence on applied
+    stress.
+\end{itemize}
+
 \subsection{Conclusion}
 
-\section{Polymer Alternative to PETG for 3D Printing}
+In order for load cells to be developed for novel applications where they are loaded with low-load over long-term, it is paramount that secondary and tertiary creep be minimized, as the existence of these phenomena will lead to increasing deflections (and thus innacurate readings) over long periods of time under even the slightest loads.
+Since stresses are low, however, the metal alloy \textit{can be brittle} (very stiff but weak), depending on the specific tolerances of the intended application.
+
+\section{PETG Polymer Treatment for 3D Printing}
 
 \subsection{Introduction}
-\subsection{Property Problem, Microstructure Solution}
+
+Polyethylene tetrapthalate's glycol-modified variant (PETG) is a strong, flexible plastic used in fused deposition modelling (FDM) 3D printing (the most common form). 
+Though less popular than polylactic acid (PLA) or acrylonitrile butadiene styrene (ABS), it boasts the following properties[7]:
+
+\begin{itemize}
+    \item High strength and durability
+    \item Moderate flexibility
+    \item Easy to use
+    \item Minimal/No shrinkage or warping post-print
+    \item Water insoluble
+\end{itemize}
+These properties make it a star candidate for structural prints during periods of rapid prototyping, as is most often the case with engineering.
+However, there are certain drawbacks, most notably the phenomenon known as "\textbf{stringing}". Due to the higher melting temperature (\textasciitilde235°C) and chemical composition,
+excess material is deposited unintentionally when the nozzle is lifted from the print, resulting in annoying strings that can be difficult to remove and can even result in a failed print, potentially losing hours of valuable prototyping time.
+
 \subsection{Conclusion}
 
+In order to improve the efficiency of 3D printing-based prototyping using PETG, a polymer treatment should be developed that prevents potentially disastrous
+"stringing"[8] while not sacrificing any of its existing beneficical qualities. 
+
+\pagebreak
 \section{References}
 
 \begin{enumerate}
-    \item "Compliant Mechanisms Explained", https://www.compliantmechanisms.byu.edu/about-compliant-mechanisms
+    \item https://www.compliantmechanisms.byu.edu/about-compliant-mechanisms
+    \item https://www.jstor.org/stable/43957291
+    \item https://en.wikipedia.org/wiki/Fatigue\_(material)
+    \item https://www.arlynscales.com/industrial-scales/what-is-load-cell-creep/
+    \item https://en.wikipedia.org/wiki/Creep\_(deformation)
+    \item https://web.iit.edu/sites/web/files/departments/academic-affairs/academic-resource-center/pdfs/MaterialsCreep.pdf
+    \item https://all3dp.com/1/3d-printer-filament-types-3d-printing-3d-filament/
+    \item https://all3dp.com/2/petg-stringing-3-easy-ways-to-prevent-it/
 \end{enumerate}
 
 \end{document}

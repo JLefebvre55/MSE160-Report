@@ -19,7 +19,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
-\LoadClass[12pt, a4paper]{article}
+\LoadClass[12pt, letterpaper]{article}
 
 % extrasp=0pt   disables extra space after sentence-ending period
 % mono          disables space stretching and shrinking
