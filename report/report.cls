@@ -3,7 +3,7 @@
 % https://github.com/gijs-pennings/latex-homework.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{homework}[2021/02/19 Gijs's homework template]
+\ProvidesClass{report}[2021/02/19 Gijs's homework template]
 
 % default = false
 \newif\if@altquants
