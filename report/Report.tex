@@ -54,10 +54,16 @@ pt}
 
 \section{Introduction}
 
-Compliant mechanisms are a category of simple mechanical devices used to transform force and motion via \textbf{elastic deformation and deflection}.
-They have become increasingly popular as an alternative to more traditional rigid and jointed systems for a variety of reasons, dependent on the use case \cite{compliant}.
-Their potential use cases are immensely broad, ranging from sensitive surgical instrumentation (that must respond and react to subtle muscle movements and deflect so as to not cause tissue damage) to emergency safety mechanisms designed to prevent the accidental firing of nuclear weapons \cite{invention}.
-Although typically made from \textbf{plastics} and other polymers, they may also be made from ductile metals (or even paper in the case of "action origami", which I think is pretty neat) \cite{invention}. For the purposes of this report, only plastics will be considered.
+Compliant mechanisms are a category of simple mechanical devices used to transform force 
+and motion via \textbf{elastic deformation and deflection}. They have become increasingly 
+popular as an alternative to more traditional rigid and jointed systems for a variety of 
+reasons, dependent on the use case \cite{compliant}. Their potential use cases are 
+immensely broad, ranging from sensitive surgical instrumentation (that must respond and 
+react to subtle muscle movements and deflect so as to not cause tissue damage) to emergency 
+safety mechanisms designed to prevent the accidental firing of nuclear weapons \cite{invention}.
+Although typically made from \textbf{plastics} and other polymers, they may also be made 
+from ductile metals (or even paper in the case of "action origami", which I think is pretty 
+neat) \cite{invention}. For the purposes of this report, only plastics will be considered.
 \vspace{1cm}
 
 \begin{figure}[h]
@@ -65,76 +71,105 @@ Although typically made from \textbf{plastics} and other polymers, they may also
     \centering
     \includegraphics[width=\textwidth]{images/comparison.png}
     \hfill
-    \caption{Two equivalent mechanisms: a typical rigid, jointed mechanism (left) and a compliant, bending mechanism (right) \cite{functionallygradedmaterials}.}
+    \caption{Two equivalent mechanisms: a typical rigid, jointed mechanism (left) and a 
+    compliant, bending mechanism (right) \cite{functionallygradedmaterials}.}
 \end{figure}
 
-One of the simplest and most common compliant implementations is in "hinge" components (those transferring work solely rotationally). Bending about a main axis is central to the operation of these mechanisms.
-Where traditional hardware mechanisms have pin joints (pins fastening two or more bodies about which they freely rotate), compliant mechanisms \textbf{bend} at specific locations with thinner cross-sectional area relative to the bending moment, known as "compliant joints" \cite{compliant}. 
+One of the simplest and most common compliant implementations is in "hinge" components (those 
+transferring work solely rotationally). Bending about a main axis is central to the operation 
+of these mechanisms. Where traditional hardware mechanisms have pin joints (pins fastening two 
+or more bodies about which they freely rotate), compliant mechanisms \textbf{bend} at specific 
+locations with thinner cross-sectional area relative to the bending moment, known as "compliant
+joints" \cite{compliant}. 
 
 \pagebreak
 \section{Hinge Fatigue via Repetitive Stress}
 
-Just as any typical hardware mechanism must be designed to withstand many, \textit{many} uses (often on the order of hundreds of thousands, or more), compliant mechanisms aiming to solve similar problems 
-must be designed to "comply" just as many times \cite{rotationalhinges}. However, where traditional hardware mechanisms experience very gradual (often unnoticeable) surface wear as a result of \textit{sliding friction} within the joints, compliant mechanisms experience permanent deformation over time
-as a result of \textbf{repeated \textit{elastic} stress} within the bending compliant joint. 
+Just as any typical hardware mechanism must be designed to withstand many, \textit{many} uses 
+(often on the order of hundreds of thousands, or more), compliant mechanisms aiming to solve 
+similar problems must be designed to "comply" just as many times \cite{rotationalhinges}. 
+However, where traditional hardware mechanisms experience very gradual (often unnoticeable) 
+surface wear as a result of \textit{sliding friction} within the joints, compliant mechanisms 
+experience permanent deformation over time as a result of \textbf{repeated \textit{elastic} 
+stress} within the bending compliant joint. 
 \vspace{1cm}
 \begin{figure}[h]
-    \label{fig:latch}
     \centering
     \includegraphics[width=\textwidth]{images/hingetypes.png}
     \hfill
-    \caption{A variety of compliant hinge topologies \cite{hingedesign}.}
+    \caption{A variety of compliant joint topologies \cite{hingedesign}.}
 \end{figure}
 
-The flexural stress $\sigma$ experienced by the joint (and hence, the deflection) is proportionate to the bending moment at that loaction, and inversely proportionate to the second moment of area $I$ of the joint at that location, and thus the cross-sectional area.
+The flexural stress $\sigma$ experienced by the joint (and hence, the deflection) is 
+proportionate to the bending moment at that location, and inversely proportionate to 
+the second moment of area $I$ of the joint at that location, and thus the cross-sectional area.
 
 \begin{equation}
     \sigma (x) \propto \frac {M(x)}{I(x)}
 \end{equation}
 
-Although specific topologies and designs of hinges is outside of the realm of microstructure-property relationships, it is important to consider the role of cross-sectional area to the \textbf{origin and propagation} of elastic flexural-stress-induced fatigue: 
-where the material is thin (i.e. where it is intended to bend, at the intended joint), it experiences a greater stress than other locations.
+Although specific topologies and designs of hinges is outside of the realm of 
+microstructure-property relationships, it is important to consider the role of 
+cross-sectional area to the \textbf{origin and propagation} of elastic flexural-
+stress-induced fatigue: where the material is thin (i.e. where it is intended to bend, 
+at the compliant joint), it experiences a greater stress than other locations.
 
 \section{Microstructure: Fatigue Origins and Parameters}
 
-In order to speak properly about the specifics of fatigue at the microstructure level, we must first accurately define it: "Polymer fatigue is the process of damage to the friction surface of polymer caused by repeated cyclic stresses (deformations) whose amplitude does not exceed the ultimate strength of the polymer." \cite{Bogdanovich2013}
+In order to speak properly about the specifics of fatigue at the microstructure level, 
+we must first accurately define it. Under repeated/cyclic elastic loading, "faults are 
+introduced at the molecular level ... After many deformations, 
+cracks will begin to appear, followed soon after by a fracture, with no apparent plastic 
+deformation in between" \cite{fatigue}. The fatigue process begins with dislocation movements, 
+which eventually form \textbf{persistent slip bands} (PSBs) that ultimately become the origin 
+of larger-order failure.
+
+% "Polymer fatigue is the process of \myuline{damage to the 
+% friction surface of [the] polymer} caused by repeated cyclic stresses (deformations) whose 
+% amplitude does not exceed the ultimate strength of the polymer." \cite{Bogdanovich2013}
 
 \begin{figure}[h]
     \label{fig:latch}
     \centering
-    \includegraphics[width=\textwidth/2]{images/stressstrain.png}
+    \includegraphics[width=\textwidth/4]{images/elastomer.png}
     \hfill
-    \caption{Stress vs strain curve for PETG samples of various levels of "infill" (additive manufacturing density) \cite{infill}.}
+    \caption{Behaviour of a network polymer under A) no load, and B) elastic stress \cite{elastomer}.
+    Note the increased length and chain alignment under loading (B). When loading is removed, the 
+    polymer will return to state A.}
 \end{figure}
 
-Invisible to the naked eye, under repetitive elastic deformation, "faults are introduced at the molecular level ... After many deformations, cracks will begin to appear, followed soon after by a fracture, with no apparent plastic deformation in between" \cite{fatigue}.
-The fatigue process begins with dislocation movements, which eventually form \textbf{persistent slip bands} (PSBs) that ultimately become the origin of larger-order failure.
+Despite remaining within the reversible linear elastic region of stresses on the material level, 
+at the microstructure, permanent polymer strand dislocation (which can be imagined as a sort of 
+"slippage" of strands past each other) causes the overlapping networks to unravel over time.
 
-% \begin{figure}[h]
-%     \label{fig:latch}
-%     \centering
-%     \begin{subfigure}[b]{0.48\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth-1cm]{images/latchl.png}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.48\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{images/latchr.png}
-%     \end{subfigure}
-%     \hfill
-%     \caption{A pair of compliant hinges forming a latch (or switch), shown here in its two possible positions \cite{wiki}.}
-% \end{figure}
+Fatigue life (number of cycles before fatigue) is also influenced by a variety of non-material factors, including 
+environment (temperature, humidity, etc.), residual stresses, and (most importantly) the magnitude 
+of the repetitively applied stress (proximity to plastic deformation). Unfortunately, the fatigue 
+process is also (to a degree) random, often displaying considerable scatter even in seemingly 
+identical samples in well controlled environments \cite{fatigue}.
 
-Fatigue life (number of cycles before fatigue) is influenced by a variety of factors, including environment (temperature, humidity, etc.), surface finish, metallurgical microstructure, presence of oxidizing or inert chemicals, residual stresses, and (most importantly) the magnitude of the repetitively applied stress (proximity to the plastic region). 
-Unfortunately, the fatigue process is also (to a degree) random, often displaying considerable scatter even in seemingly identical samples in well controlled environments \cite{fatigue}.
+There are, however, a number of polymer parameters that factor in to how a material responds to
+cyclical elastic loading. If the number of overlapping strands (or the degree of "networking") is
+increased, the secondary bonding (IMFs) between polymers is strengthened, and the sample can resist
+slippage at higher stresses for a higher number of cycles. In addition, a lower Young's modulus of
+elasticity would result in a greater tendency for the material to comply to the imparted load, reducing
+the stress on the microstructure itself. This tendency to compliance is also parameterized by viscosity,
+a property of so-called "elastomers", which display both "springy" elasticity (B$\to$A) and "flowing" viscosity (A$\to$B).
 
 \section{Conclusion}
 
-In order for critical compliant mechanisms to be reliable over long lifetimes, they must be made of materials resilient to high-cycle fatigue. Polymers intended for these applications must be resistent to dislocation movements while maintaining suitable flexibility AND stiffness for the design application (with a specific focus on "hinges").
+In order for critical compliant mechanisms to be reliable over long lifetimes, they must be made of 
+materials resilient to high-cycle fatigue. Polymers intended for these applications must be resistent 
+to inter-polymer surface wear due to friction, while maintaining suitable flexibility AND stiffness for the design 
+application (with a specific focus on "hinges").
+
+Network polymers or elastomers are best suited for this application, as they have low Young's modulus of elasticity,
+and thus deflect easily under minimal effort. This decreased stiffness does not detract from the design potential, as the cross-section
+can be simply made thicker for a greater resistance to bending (to a point). In addition, elastomers and other highly-networked polymers
+are more able to distribute the load under bending, resulting in fewer instances of fatigue and a longer lifecycle for future
+compliant products.
 
 \pagebreak
-\section{References}
 
 \bibliographystyle{IEEEtran}
 
